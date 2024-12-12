@@ -1,0 +1,91 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Работа с DOM</title>
+</head>
+<body>
+    <h1>Заголовок H1</h1>
+    <h2>Заголовок H2</h2>
+    <p>Старый текст параграфа.</p>
+    <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" id="video" width="560" height="315"></iframe>
+
+    <form id="myForm">
+        <label for="name">Имя:</label>
+        <input type="text" id="name" name="name"><br>
+        <label for="email">E-mail:</label>
+        <input type="email" id="email" name="email"><br>
+        <label for="phone">Телефон:</label>
+        <input type="text" id="phone" name="phone"><br>
+        <label for="date">Дата:</label>
+        <input type="date" id="date" name="date"><br>
+        <label for="comment">Комментарий:</label>
+        <textarea id="comment" name="comment"></textarea><br>
+        <button type="submit" id="submitButton">Отправить</button>
+    </form>
+
+    <script>
+    document.querySelector('h1').textContent = "Добро пожаловать на наш сайт!";
+
+    document.querySelector('h2').style.color = "red";
+
+    document.querySelector('p').textContent = "Это новый текст параграфа.";
+
+    document.querySelector('#video').style.display = "none";
+
+    const formData = {
+        name: '',
+        email: '',
+        phone: '',
+        date: '',
+        comment: '',
+        printData: function() {
+            console.log(`
+Имя: ${this.name}
+E-mail: ${this.email}
+Телефон: ${this.phone}
+Дата: ${this.date}
+Комментарий: ${this.comment}
+                `);
+        }
+    };
+
+    function submitForm(event) {
+        event.preventDefault();
+
+        const name = document.querySelector('#name').value.trim();
+        const email = document.querySelector('#email').value.trim();
+        const phone = document.querySelector('#phone').value.trim();
+        const date = document.querySelector('#date').value.trim();
+        const comment = document.querySelector('#comment').value.trim();
+
+        if (name == null || email == null || comment == null) {
+            alert("Пожалуйста, заполните обязательные поля (Имя, E-mail, Комментарий).");
+            return;
+        }
+
+        if (!/^\d+$/.test(phone)) {
+            alert("Телефон должен содержать только цифры.");
+            return;
+        }
+
+        if (!/^\S+@\S+\.\S+$/.test(email)) {
+            alert("Введите корректный e-mail.");
+            return;
+        }
+
+        formData.name = name;
+        formData.email = email;
+        formData.phone = phone;
+        formData.date = date;
+        formData.comment = comment;
+
+        formData.printData();
+        alert("Данные успешно отправлены!");
+    }
+
+    document.querySelector('#submitButton').addEventListener('click', submitForm);
+    </script>
+</body>
+</html>

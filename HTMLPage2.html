@@ -1,0 +1,220 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Разработка веб-приложений</title>
+    <!-- Подключение Bootstrap CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css"> <!-- Ссылка на файл стилей -->
+    <!-- Добавим CSS для анимации -->
+    <style>
+        .message {
+            display: none;
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: green;
+            margin-top: 20px;
+            text-align: center;
+        }
+
+            .message.show {
+                display: block;
+                animation: fadeIn 2s ease-in-out, fadeOut 2s 3s forwards;
+            }
+
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+            }
+
+            100% {
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeOut {
+            0% {
+                opacity: 1;
+            }
+
+            100% {
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Шапка сайта -->
+    <header class="bg-dark text-white text-center py-4">
+        <h1>Группа ЭФБО-06-23</h1>
+        <h2>Демидов Иван</h2>
+    </header>
+
+    <!-- Навигация -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-secondary sticky-top">
+        <a class="navbar-brand" href="#">В начало</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item"><a class="nav-link" href="HTMLPage1.html">Главная</a></li>
+                <li class="nav-item"><a class="nav-link" href="HTMLPage3.html">Первый семестр</a></li>
+                <li class="nav-item"><a class="nav-link" href="HTMLPage4.html">Второй семестр</a></li>
+                <li class="nav-item"><a class="nav-link" href="HTMLPage2.html">Услуги</a></li>
+                <li class="nav-item"><a class="nav-link" href="HTMLPage5.html">Авторизация</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Основной контент -->
+    <div class="container my-4">
+        <h1 class="text-center mb-4">Разработка веб-приложений</h1>
+
+        <!-- Услуги -->
+        <div class="row">
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    <img src="https://i.pinimg.com/736x/17/fc/60/17fc600d9bfd9f4aff6bdd718e82df98.jpg" class="card-img-top" alt="Сайт-визитка">
+                    <div class="card-body text-center">
+                        <p class="card-text">Сайт-визитка</p>
+                        <button class="btn btn-primary" onclick="openModal('Сайт-визитка')">Заказать</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    <img src="https://i.pinimg.com/originals/f6/2a/27/f62a27755f95860697986fbfeca54bd5.jpg" class="card-img-top" alt="Корпоративный сайт">
+                    <div class="card-body text-center">
+                        <p class="card-text">Корпоративный сайт</p>
+                        <button class="btn btn-primary" onclick="openModal('Корпоративный сайт')">Заказать</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    <img src="https://i.pinimg.com/564x/de/85/30/de85308573a4c803e01dfbde6619c821.jpg" class="card-img-top" alt="Интернет-магазин">
+                    <div class="card-body text-center">
+                        <p class="card-text">Интернет-магазин</p>
+                        <button class="btn btn-primary" onclick="openModal('Интернет-магазин')">Заказать</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Сообщение об успешной отправке формы -->
+        <div id="successMessage" class="message">Форма отправлена!</div>
+    </div>
+
+    <!-- Модальное окно с формой -->
+    <div id="serviceModal" class="modal" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Заказать услугу</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="closeModal()">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form id="serviceForm" onsubmit="submitForm(event)">
+                        <div class="form-group">
+                            <label for="name">Как вас зовут:</label>
+                            <input type="text" id="name" name="name" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Ваш e-mail:</label>
+                            <input type="email" id="email" name="email" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Телефон:</label>
+                            <input type="tel" id="phone" name="phone" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="country">Страна:</label>
+                            <select id="country" name="country" class="form-control">
+                                <option value="Россия">Россия</option>
+                                <option value="Украина">Украина</option>
+                                <option value="Беларусь">Беларусь</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="date">Дата:</label>
+                            <input type="date" id="date" name="date" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="comments">Комментарий:</label>
+                            <textarea id="comments" name="comments" class="form-control"></textarea>
+                        </div>
+                        <input type="hidden" id="serviceType" name="serviceType">
+                        <button type="submit" class="btn btn-primary">Отправить</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Футер -->
+    <footer class="bg-dark text-white text-center py-3">
+        © Демидов Иван, 2024
+    </footer>
+
+    <!-- Подключение Bootstrap JS и jQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <script>
+        function openModal(serviceType) {
+            console.log("Открытие модального окна для услуги:", serviceType);
+            document.getElementById("serviceType").value = serviceType;
+            const modal = document.getElementById("serviceModal");
+            modal.style.display = "block";
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            const modal = document.getElementById("serviceModal");
+            modal.style.display = "none";
+            document.body.style.overflow = 'auto';
+        }
+
+        function submitForm(event) {
+            event.preventDefault(); // Предотвращает перезагрузку страницы
+            const name = document.getElementById("name").value;
+            const email = document.getElementById("email").value;
+            const phone = document.getElementById("phone").value;
+            const country = document.getElementById("country").value;
+            const date = document.getElementById("date").value;
+            const comments = document.getElementById("comments").value;
+            const serviceType = document.getElementById("serviceType").value;
+
+            if (name && email && phone) {
+                console.log("Введенные данные:");
+                console.log("Имя:", name);
+                console.log("Email:", email);
+                console.log("Телефон:", phone);
+                console.log("Страна:", country);
+                console.log("Дата:", date || "Не указана");
+                console.log("Комментарий:", comments || "Отсутствует");
+                console.log("Тип услуги:", serviceType);
+
+                // Показываем сообщение об отправке
+                const successMessage = document.getElementById("successMessage");
+                successMessage.classList.add("show");
+
+                setTimeout(() => {
+                    successMessage.classList.remove("show");
+                }, 5000); // Скрыть сообщение через 5 секунд
+
+                closeModal(); // Закрывает модальное окно
+            } else {
+                alert("Заполните все обязательные поля!");
+            }
+        }
+    </script>
+
+</body>
+</html>

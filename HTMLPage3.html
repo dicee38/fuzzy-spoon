@@ -1,0 +1,249 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Учебные материалы</title>
+    <!-- Подключение Bootstrap CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css"> <!-- Ссылка на файл стилей -->
+    <script src="script.js" defer></script>
+    <style>
+        .lectures-table {
+            display: none;
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+        }
+
+        .practicals-table {
+            display: none;
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+        }
+    </style>
+</head>
+<body>
+    <!-- Шапка сайта -->
+    <header class="bg-dark text-white text-center py-4">
+        <h3>Группа ЭФБО-06-23</h3>
+        <h3>Демидов Иван</h3>
+    </header>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-secondary sticky-top">
+        <a class="navbar-brand" href="#">В начало</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item"><a class="nav-link" href="HTMLPage1.html">Главная</a></li>
+                <li class="nav-item"><a class="nav-link" href="HTMLPage3.html">Первый семестр</a></li>
+                <li class="nav-item"><a class="nav-link" href="HTMLPage4.html">Второй семестр</a></li>
+                <li class="nav-item"><a class="nav-link" href="HTMLPage2.html">Услуги</a></li>
+                <li class="nav-item"><a class="nav-link" href="HTMLPage5.html">Авторизация</a></li>
+            </ul>
+        </div>
+    </nav>
+    <!-- Содержание -->
+    <div class="container my-4">
+        <h1>Содержание</h1>
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item"><a href="#lectures" class="text-decoration-none">Перечень лекций</a></li>
+            <li class="list-group-item"><a href="#practicals" class="text-decoration-none">Перечень практических занятий</a></li>
+            <li class="list-group-item"><a href="#pdf" class="text-decoration-none">PDF-документ</a></li>
+            <li class="list-group-item"><a href="#map" class="text-decoration-none">Интерактивная Яндекс карта</a></li>
+            <li class="list-group-item"><a href="#videos" class="text-decoration-none">Видеоуроки</a></li>
+        </ul>
+    </div>
+
+    <!-- Основной контент -->
+    <main class="container my-4">
+        <h1>Разработка веб-приложений</h1>
+
+        <h2 id="lectures">Перечень лекций</h2>
+        <button class="btn btn-primary my-3" onclick="toggleLectures()">Показать лекции</button>
+
+        <table class="table table-bordered lectures-table" id="lectures-table">
+            <thead>
+                <tr>
+                    <th>№</th>
+                    <th>Тема</th>
+                    <th>Отметка о посещении</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>Основы языка HTML</td>
+                    <td><input type="checkbox" checked /></td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>Углубленное изучение HTML</td>
+                    <td><input type="checkbox" /></td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>Основы работы с CSS</td>
+                    <td><input type="checkbox" /></td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td>Адаптивная верстка. Flexbox и Grid Layout</td>
+                    <td><input type="checkbox" /></td>
+                </tr>
+                <tr>
+                    <td>5</td>
+                    <td>Bootstrap — работа с фреймворком</td>
+                    <td><input type="checkbox" /></td>
+                </tr>
+                <tr>
+                    <td>6</td>
+                    <td>Основы языка JavaScript</td>
+                    <td><input type="checkbox" /></td>
+                </tr>
+                <tr>
+                    <td>7</td>
+                    <td>Работа с DOM и событиями в JavaScript</td>
+                    <td><input type="checkbox" /></td>
+                </tr>
+                <tr>
+                    <td>8</td>
+                    <td>Введение в GitHub и GitHub Pages</td>
+                    <td><input type="checkbox" /></td>
+                </tr>
+                <tr>
+                    <td>9</td>
+                    <td>Основы языка PHP</td>
+                    <td><input type="checkbox" /></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2 id="practicals">Перечень практических занятий</h2>
+        <button class="btn btn-primary my-3" onclick="updatePracticals()">Посмотреть практики второго семестра</button>
+        <button class="btn btn-secondary my-3" onclick="returnToFirstSemester()">Вернуться к практикам первого семестра</button>
+
+        <!-- Таблица для практик второго семестра -->
+        <table class="table table-bordered practicals-table" id="practicals-table">
+            <thead>
+                <tr>
+                    <th>№</th>
+                    <th>Тема</th>
+                    <th>Отметка о посещении</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Практики будут добавляться сюда через JavaScript -->
+            </tbody>
+        </table>
+
+        <h2 id="pdf">PDF-документ</h2>
+        <iframe src="1%D0%94%D0%B5%D0%BC%D0%B8%D0%B4%D0%BE%D0%B2%20%D0%98.%D0%A1.%20%D0%AD%D0%A4%D0%91%D0%9E-06-23.pdf" width="100%" height="600px"></iframe>
+
+        <h2 id="map">Интерактивная Яндекс карта</h2>
+        <div class="embed-container">
+            <iframe src="https://yandex.ru/map-widget/v1/-/CCUDEOMiRB" frameborder="0" width="100%" height="400px"></iframe>
+        </div>
+
+        <h2 id="videos">Видеоуроки</h2>
+        <div class="video-container">
+            <video class="mb-4" controls>
+                <source src="video1.mp4" type="video/mp4" />
+                Ваш браузер не поддерживает видео.
+            </video>
+            <video controls>
+                <source src="video2.mp4" type="video/mp4" />
+                Ваш браузер не поддерживает видео.
+            </video>
+        </div>
+    </main>
+
+    <!-- Футер -->
+    <footer class="bg-dark text-white text-center py-3">
+        <p>&copy; Демидов Иван, 2024</p>
+    </footer>
+
+    <!-- Подключение Bootstrap JS и зависимостей -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <script>
+        function toggleLectures() {
+            const lecturesTable = document.getElementById('lectures-table');
+            lecturesTable.style.display = 'table'; // Меняем display на table
+            setTimeout(() => {
+                lecturesTable.style.opacity = 1; // Добавляем плавное появление
+            }, 10); // Небольшая задержка для анимации
+        }
+
+        function updatePracticals() {
+            const secondSemesterPracticals = [
+                "Базовое бэкенд-приложение",
+                "HTTP-запросы",
+                "JSON и работа с ним",
+                "HTTP-ответы",
+                "Проектирование API",
+                "Роутинг и его настройка",
+                "NoSQL базы данных",
+                "Обеспечение авторизации и доступа пользователей",
+                "Работа сторонних сервисов уведомления и авторизации",
+                "Основы ReactJS",
+                "Работа с компонентами динамической DOM",
+                "Использование хуков в React",
+                "Основы микросервисной архитектуры",
+                "Разработка классических модулей веб-приложений",
+                "Разработка классических модулей веб-приложений"
+            ];
+
+            const tableBody = document.querySelector("#practicals-table tbody");
+            tableBody.innerHTML = ""; // Очищаем текущие строки таблицы
+
+            secondSemesterPracticals.forEach((topic, index) => {
+                const row = document.createElement("tr");
+                row.innerHTML = `
+                                <td>${index + 1}</td>
+                                <td>${topic}</td>
+                                <td><input type="checkbox" /></td>
+                            `;
+                tableBody.appendChild(row);
+            });
+
+            const practicalsTable = document.getElementById('practicals-table');
+            practicalsTable.style.display = 'table'; // Меняем display на table
+            setTimeout(() => {
+                practicalsTable.style.opacity = 1; // Добавляем плавное появление
+            }, 10); // Небольшая задержка для анимации
+        }
+
+        function returnToFirstSemester() {
+            const practicalsTable = document.getElementById('practicals-table');
+            practicalsTable.style.display = 'none'; // Скрываем практики второго семестра
+
+            // Пример первого семестра (практики для 1 семестра)
+            const firstSemesterPracticals = [
+                "Основы HTML",
+                "Основы CSS",
+                "Работа с JavaScript",
+                "Адаптивная верстка",
+                "Основы PHP"
+            ];
+
+            const tableBody = document.querySelector("#practicals-table tbody");
+            tableBody.innerHTML = ""; // Очищаем текущие строки таблицы
+
+            firstSemesterPracticals.forEach((topic, index) => {
+                const row = document.createElement("tr");
+                row.innerHTML = `
+                                <td>${index + 1}</td>
+                                <td>${topic}</td>
+                                <td><input type="checkbox" /></td>
+                            `;
+                tableBody.appendChild(row);
+            });
+
+            practicalsTable.style.display = 'table'; // Показываем таблицу с практиками первого семестра
+        }
+    </script>
+</body>
+</html>
